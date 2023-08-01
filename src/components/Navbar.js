@@ -48,8 +48,11 @@ const NavContainer = styled.nav`
   display: flex;
   align-items: center;
   justify-content: center;
-
-  .nav-center {
+ position:fixed;
+  width:100%;
+  z-index: 1;
+ background-color:#fff;
+  .nav-center {    
     width: 90vw;
     margin: 0 auto;
     max-width: var(--max-width);

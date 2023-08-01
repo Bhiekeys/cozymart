@@ -2,10 +2,19 @@ import React from 'react';
 import styled from 'styled-components';
 import { PageHero } from '../components';
 import aboutImg from '../assets/hero-bcg.jpeg';
-import {motion} from "framer-motion"
+import { motion } from "framer-motion"
+import useIntersectionObserver from '../animation/useIntersectionObserver';
+import { useRef } from 'react';
 const AboutPage = () => {
+  const sectionRef = useRef(null);
+  const isVisible = useIntersectionObserver(sectionRef);
   return (
-    <main>
+    <motion.main
+      ref={sectionRef}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
+      transition={{ duration: 1, ease: 'easeOut' }}
+      style={{ paddingTop: '80px' }}>
       <PageHero title="about" />
       <Wrapper className="page section section-center">
         <motion.img
@@ -17,10 +26,10 @@ const AboutPage = () => {
           transition={{ duration: 1.5, ease: 'easeOut' }}
         />
         <motion.article
-          initial={{ opacity: 0, x: '100%' }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: '100%' }}
-          transition={{ duration: 1, ease: 'easeOut' }}>
+          ref={sectionRef}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
+          transition={{ duration: 1.5, ease: 'easeOut' }}>
           <div className="title">
             <h2>Our Story</h2>
             <div className="underline"></div>
@@ -39,7 +48,7 @@ const AboutPage = () => {
           </p>
         </motion.article>
       </Wrapper>
-    </main>
+    </motion.main>
   );
 };
 

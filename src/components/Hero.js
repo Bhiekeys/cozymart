@@ -23,7 +23,8 @@ const Hero = () => {
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
         opacity: 0,
-        backgroundBlendMode: "multiply",
+        backgroundBlendMode: 'multiply',
+        paddingTop: '90px',
       }}
       ref={sectionRef}
       initial={{ opacity: 0, y: 20 }}
@@ -63,6 +64,7 @@ const Hero = () => {
 };
 
 const Wrapper = styled.section`
+
   min-height: 60vh;
   display: grid;
   text-align: center;

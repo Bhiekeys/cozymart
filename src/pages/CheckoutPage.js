@@ -10,13 +10,13 @@ import { PageHero } from '../components';
 
 const CheckoutPage = () => {
   return (
-    <main>
+    <main style={{ paddingTop: '80px' }}>
       <PageHero title="checkout" />
       <Wrapper className="page">
         <motion.h1
-          initial={{ opacity: 0, x: '100%' }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: '-100%' }}
+          initial={{ opacity: 0, y: '100%' }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: '-100%' }}
           transition={{
             duration: 10,
             ease: 'linear',

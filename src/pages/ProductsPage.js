@@ -4,7 +4,7 @@ import { Filters, ProductList, Sort, PageHero } from '../components';
 
 const ProductsPage = () => {
   return (
-    <main>
+    <main style={{ paddingTop: '80px' }}>
       <PageHero title="products" />
       <Wrapper className="page">
         <div className="section-center products">

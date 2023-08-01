@@ -47,6 +47,7 @@ const CartPage = () => {
 };
 
 const Wrapper = styled.main`
+padding-top: 163px;
 overflow:hidden;
   .empty {
     text-align: center;

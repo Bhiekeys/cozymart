@@ -2,23 +2,29 @@ import React from 'react';
 import styled from 'styled-components';
 import { formatPrice } from '../utils/helpers';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+
 const ListView = ({ products }) => {
   return (
     <Wrapper>
       {products.map((product) => {
         const { id, image, name, price, description } = product;
         return (
-          <article key={id}>
+          <motion.article
+            key={id}
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.5, delay: id * 0.1 }}>
             <img src={image} alt={name} />
             <div>
               <h4>{name}</h4>
               <h5 className="price">{formatPrice(price)}</h5>
-              <p>{description.substring(0,150)}...</p>
+              <p>{description.substring(0, 150)}...</p>
               <Link to={`/products/${id}`} className="btn">
                 Details
               </Link>
             </div>
-          </article>
+          </motion.article>
         );
       })}
     </Wrapper>
