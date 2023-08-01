@@ -26,7 +26,7 @@ const CartPage = () => {
               duration: 4,
               ease: 'easeInOut',
             }}>
-            <Lottie animationData={animationData} style={{ height: '240px' }} />
+            <Lottie animationData={animationData} style={{ height: '230px' }} />
           </motion.div>
           <h2>Your cart is empty</h2>
           <Link to="/products" className="btn">
