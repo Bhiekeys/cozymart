@@ -16,6 +16,8 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
   <Auth0Provider
+    // domain="dev-n0fctcau1podz6uz.us.auth0.com"
+    // clientId="CK8gcjpkT1ejp2NwIQ2sVCgtmem580b1"
     domain={process.env.REACT_APP_AUTH_DOMAIN}
     clientId={process.env.REACT_APP_AUTH_CLIENT_ID}
     authorizationParams={{
