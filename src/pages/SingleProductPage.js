@@ -8,13 +8,17 @@ import {
   Error,
   ProductImages,
   AddToCart,
-  Stars,
+  Stars, 
   PageHero,
 } from '../components';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-
+import { motion } from 'framer-motion';
+import useIntersectionObserver from '../animation/useIntersectionObserver';
+import { useRef } from 'react';
 const SingleProductPage = () => {
+  const sectionRef = useRef(null);
+  const isVisible = useIntersectionObserver(sectionRef);
   const { id } = useParams();
   const navigate = useNavigate();
   const {
@@ -60,13 +64,20 @@ const SingleProductPage = () => {
   return (
     <Wrapper>
       <PageHero title={name} product />
-      <div className="section section-center page">
+      <motion.div
+        className="section section-center page"
+       >
         <Link to="/products" className="btn">
           back to products
         </Link>
         <div className="product-center">
           <ProductImages images={images} />
-          <section className="content">
+          <motion.section
+            className="content"
+            ref={sectionRef}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
+            transition={{ duration: 1.5, ease: 'easeOut' }}>
             <h2>{name}</h2>
             <Stars stars={stars} reviews={reviews} />
             <h5 className="price">{formatPrice(price)}</h5>
@@ -85,14 +96,15 @@ const SingleProductPage = () => {
             </p>
             <hr />
             {stock > 0 && <AddToCart product={product} />}
-          </section>
+          </motion.section>
         </div>
-      </div>
+      </motion.div>
     </Wrapper>
   );
 };
 
 const Wrapper = styled.main`
+padding-top:80px;
   .product-center {
     display: grid;
     gap: 4rem;

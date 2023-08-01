@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-
+import { motion } from 'framer-motion';
 const ProductImages = ({ images = [{ url: '' }] }) => {
   const [main, setMain] = useState(images[0]);
   return (
@@ -9,7 +9,7 @@ const ProductImages = ({ images = [{ url: '' }] }) => {
       <div className="gallery">
         {images.map((image, index) => {
           return (
-            <img
+            <motion.img
               src={image.url}
               alt={image.filename}
               key={index}
@@ -24,6 +24,7 @@ const ProductImages = ({ images = [{ url: '' }] }) => {
 };
 
 const Wrapper = styled.section`
+
   .main {
     height: 600px;
   }
