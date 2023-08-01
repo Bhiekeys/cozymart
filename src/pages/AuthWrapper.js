@@ -8,7 +8,7 @@ const AuthWrapper = ({ children }) => {
   const { isLoading, error } = useAuth0();
   if (isLoading) {
     return (
-      <Wrapper style={{ background: 'var(--clr-primary-10)' }}>
+      <Wrapper style={{ background: '#fff' }}>
         <Lottie animationData={animationData} />
       </Wrapper>
     );
